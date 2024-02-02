@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
-# Requires python3-hamlib (Debian/Ubuntu package name)
-#
+# Requires:
+# - python3-requests
+# - python3-hamlib
+
 # you need to create the config directory and copy/edit the file
 CONFIG_FILE = "~/.config/cloudlog-sync/config.ini"
 
@@ -44,7 +46,6 @@ def startHamlib():
         print("status(str):\t\t%s" % Hamlib.rigerror(rig.error_status))
         sys.exit(1)
     if config['DEFAULT'].getboolean('debug'):
-        # rig.caps.rig_model
         print("Hamlib correctly connected to radio {} {} with path {}".format(rig.caps.mfg_name, rig.caps.model_name, config['HAMLIB']['path']))
 
 def closeHamlib():
@@ -72,10 +73,11 @@ def syncCloudlog():
         rig_power=int(rig.get_level_f(Hamlib.RIG_LEVEL_RFPOWER)*100)
 
         if rig.error_status != 0:
-            # probably the connection is closed; try to restart
+            # probably the connection is broken; try to restart
             closeHamlib()
             startHamlib()
 
+        # send new data to Cloudlog only it is changed
         if rig_freq != rig_old_freq or rig_mode != rig_old_mode or rig_power != rig_old_power:
             rig_old_freq = rig_freq
             rig_old_mode = rig_mode
