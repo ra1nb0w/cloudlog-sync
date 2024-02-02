@@ -1,4 +1,4 @@
-* Cloudlog Hardware Interface Sync using Hamlib as backend
+* Cloudlog Radio Sync using Hamlib as backend
 
 This is a simple python script useful to synchronize any radio
 supported by the Hamlib library. The only external python requirements
@@ -7,8 +7,8 @@ are python-requests and python-hamlib.
 ** Usage
 
 - install hamlib python3 binding and requests
-  Debian/Ubuntu: ~sudo apt-get install python3-hamlib python3-requests~
-  Archlinux: ~sudo pacman -S hamlib python-requests~
+  + Debian/Ubuntu: ~sudo apt-get install python3-hamlib python3-requests~
+  + Archlinux: ~sudo pacman -S hamlib python-requests~
 - create the configuration folder ~~/.config/cloudlog-sync~
 - copy ~config.ini~ into the configuration folder and adapt it to your needs
 - run ~./cloudlog-sync.py~
