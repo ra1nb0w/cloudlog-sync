@@ -1,16 +1,15 @@
 [Unit]
 Description=Clouglog hardware sync using Hamlib as backend
 After=network.target
-StartLimitBurst=1
-StartLimitInterval=30
 
 [Service]
-ExecStart=/usr/local/bin/cloudlog_sync.py
+Type=simple
+ExecStart=/usr/local/bin/cloudlog-sync.py
 # Disable Python's buffering of STDOUT and STDERR, so that output from the
 # service shows up immediately in systemd's logs
 Environment=PYTHONUNBUFFERED=1
-Restart=on-failure
-RestartSec=5
+Restart=always
+RestartSec=30
 # Use a dedicated user to run our service
 #User=cloudlog
 
