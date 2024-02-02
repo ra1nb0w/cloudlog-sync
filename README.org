@@ -9,7 +9,7 @@ are python-requests and python-hamlib.
 - install hamlib python3 binding and requests
   + Debian/Ubuntu: ~sudo apt-get install python3-hamlib python3-requests~
   + Archlinux: ~sudo pacman -S hamlib python-requests~
-- create the configuration folder ~~/.config/cloudlog-sync~
+- create the configuration folder ~$HOME/.config/cloudlog-sync~
 - copy ~config.ini~ into the configuration folder and adapt it to your needs
 - run ~./cloudlog-sync.py~
 - you can also use it as a systemd user service using ~cloudlog-sync.service~
